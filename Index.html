@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serene Until Now</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+:root {
+  --deep-serenity-blue: #2E4057;
+  --mist-blue: #6E8CA0;
+  --linen-beige: #EFE6DD;
+  --soft-white: #FAF7F2;
+  --walnut-wood: #8A6A52;
+  --champagne-gold: #D6C2A1;
+  --charcoal: #2B2B2B;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #ffffff';
+  overflow-x: hidden;
+}
+
+/* =====================================
+TOP BAR
+===================================== */
+
+.topbar {
+  background: linear-gradient(90deg, #173B5B, #0E3555);
+  color: var(--champagne-gold);
+
+  padding: 8px 6%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid rgba(214,194,161,.35);
+}
+
+.topbar-left {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.socials {
+  display: flex;
+  gap: 28px;
+}
+
+.socials a {
+  color: var(--champagne-gold);
+  font-size: 1.25rem;
+  transition: .25s ease;
+}
+
+.socials a:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* =====================================
+HERO
+===================================== */
+
+.hero-banner {
+
+  position: relative;
+
+  min-height: 780px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(239,230,221,0.86) 0%,
+      rgba(46,64,87,0.20) 5%,
+      rgba(46,64,87,0.95) 100%
+    ),
+    url('images/hero.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+.hero-banner::before {
+
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255,255,255,0.45),
+      transparent 35%
+    );
+
+  pointer-events: none;
+}
+
+/* =====================================
+NAVIGATION
+===================================== */
+
+.main-nav {
+
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 30px 6%;
+}
+
+/* =====================================
+LOGOS
+===================================== */
+
+.logo-wrap img {
+
+  height: auto;
+  max-width: 100%;
+}
+
+/* DESKTOP LOGO */
+
+.logo-wrap .logo-desktop {
+
+  display: block;
+
+  width: 280px;
+
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+/* HIDE MOBILE LOGO ON DESKTOP */
+
+.logo-wrap .logo-mobile {
+
+  display: none;
+}
+
+.nav-links {
+
+  display: flex;
+  align-items: center;
+  gap: 42px;
+
+  list-style: none;
+}
+
+.nav-links a {
+
+  color: white;
+  text-decoration: none;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+
+  color: var(--champagne-gold);
+}
+
+/* =====================================
+FIXED DROPDOWN
+===================================== */
+
+.dropdown {
+  position: relative;
+
+}
+
+/* Invisible hover bridge */
+
+.dropdown::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 100%;
+
+  width: 100%;
+  height: 20px;
+}
+
+.dropdown-menu {
+
+  position: absolute;
+    border-top: 1px solid #8A6A52;
+
+  top: 100%;
+  left: 0;
+
+  margin-top: 12px;
+
+  width: 280px;
+
+  background: #FAF7F2;
+
+  backdrop-filter: blur(14px);
+
+  border-radius: 8px;
+
+
+  padding: 8px 0;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(10px);
+
+  transition: all 0.25s ease;
+
+  box-shadow:
+    0 12px 35px rgba(0,0,0,0.25);
+}
+
+.dropdown:hover .dropdown-menu {
+
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu a {
+
+  display: block;
+
+  color: #243447;
+
+  font-size: 1.3rem;
+
+  padding: 18px 28px;
+
+  border-bottom:
+    1px solid rgba(0,0,0,0.06);
+}
+
+.dropdown-menu a:hover {
+
+  color: #8A6A52;
+}
+
+/* =====================================
+HERO CONTENT
+===================================== */
+
+.hero-content {
+
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 540px;
+
+  padding: 0 8%;
+}
+
+.hero-text {
+  max-width: 620px;
+}
+
+.hero-text h1 {
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 5rem;
+  line-height: 1.05;
+
+  /*color: var(--deep-serenity-blue);*/
+color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 2rem;
+  line-height: 1;
+
+  /*color: var(--charcoal);*/
+  color: #ffffff;
+
+  margin-bottom: 36px;
+}
+
+.hero-buttons {
+
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.primary-btn {
+
+  background: var(--deep-serenity-blue);
+  color: var(--soft-white);
+
+  padding: 18px 34px;
+
+  border-radius: 999px;
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  transition: .25s ease;
+}
+
+.primary-btn:hover {
+
+  background: #1f3245;
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+
+  color: #EFE6DD;
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+}
+
+/* =====================================
+MOBILE
+===================================== */
+
+.mobile-toggle {
+
+  display: none;
+
+  font-size: 2rem;
+  color: white;
+
+  cursor: pointer;
+}
+
+@media (max-width: 980px) {
+  .hero-content{
+    min-height: 280px;
+    padding-top:5px;
+  }
+  .hero-banner {
+    min-height: auto;
+    padding-bottom: 80px;
+  }
+
+  .mobile-toggle {
+    display: block;
+    z-index: 999;
+  }
+
+  .nav-links {
+
+    position: fixed;
+
+    top: 0;
+    right: -100%;
+
+    width: 82%;
+    height: 100vh;
+
+    background: rgba(46,64,87,0.98);
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 120px 40px;
+
+    transition: 0.4s ease;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .dropdown-menu {
+
+    position: static;
+
+    display: block;
+
+    opacity: 1;
+    visibility: visible;
+
+    transform: none;
+
+    background: transparent;
+
+    box-shadow: none;
+
+    width: 100%;
+
+    padding-left: 12px;
+
+    margin-top: 10px;
+  }
+
+  .dropdown-menu a {
+
+    color: white;
+
+    padding: 10px 0;
+
+    border: none;
+
+    font-size: 1.15rem;
+  }
+
+  .hero-content {
+
+    text-align: center;
+    justify-content: center;
+    padding-top: 40px;
+  }
+
+  .hero-text h1 {
+    font-size: 3rem;
+  }
+
+  .hero-text p {
+    font-size: 1.25rem;
+      }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  /* TABLET / MOBILE LOGO */
+
+  .logo-wrap .logo-desktop {
+
+    display: none;
+  }
+
+  .logo-wrap .logo-mobile {
+
+    display: block;
+
+    width: 190px;
+
+    margin-left: 0;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 650px) {
+
+  .topbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 5%;
+  }
+
+  .topbar-left {
+    font-size: 1.25rem;
+  }
+
+  .socials a {
+    font-size: 1.15rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1.1rem;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* PHONE LOGO */
+
+  .logo-wrap .logo-mobile {
+
+    width: 150px;
+  }
+}
+
+/* color palette */
+  main { max-width: 1100px; margin: 0 auto; padding: 36px 22px; }
+.palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 18px;
+}
+.swatch {
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.color { height: 115px; }
+.info { padding: 16px; }
+.info strong { display: block; font-size: 16px; }
+.info code { color: #555; }
+.usage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.07);
+  border-top: 6px solid var(--champagne-gold);
+}
+.button-demo {
+  display: inline-block;
+  background: var(--deep-serenity-blue);
+  color: var(--soft-white);
+  padding: 12px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  margin-top: 8px;
+}
+.secondary-button {
+  display: inline-block;
+  background: var(--champagne-gold);
+  color: var(--charcoal);
+  padding: 12px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  margin-top: 8px;
+}
+pre {
+  background: #1f2a33;
+  color: #f7f3ee;
+  padding: 22px;
+  border-radius: 16px;
+  overflow-x: auto;
+}
+footer {
+  padding: 28px;
+  text-align: center;
+  background: var(--linen-beige);
+  color: var(--charcoal);
+}
+
+/* =====================================
+BACK TO TOP BUTTON
+===================================== */
+
+#backToTop {
+
+  position: fixed;
+
+  bottom: 30px;
+  right: 30px;
+
+  width: 52px;
+  height: 52px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #2E4057;
+  color: white;
+
+  font-size: 1.2rem;
+
+  cursor: pointer;
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.2);
+
+  transition: all 0.3s ease;
+
+  z-index: 9999;
+}
+
+#backToTop:hover {
+
+  background: #8A6A52;
+
+  transform: translateY(-3px);
+}
+
+@media (max-width: 650px) {
+
+  #backToTop {
+
+    width: 46px;
+    height: 46px;
+
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+
+  <div class="topbar-left">
+    <span>✦</span>
+    <span>Awaken. Align. Shine.</span>
+  </div>
+
+  <div class="socials">
+
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+    <a href="#"><i class="fab fa-instagram"></i></a>
+
+    <a href="#"><i class="fab fa-youtube"></i></a>
+
+    <a href="#"><i class="far fa-envelope"></i></a>
+
+  </div>
+
+</div>
+
+<header class="hero-banner">
+
+  <nav class="main-nav">
+
+    <div class="logo-wrap">
+
+      <!-- DESKTOP LOGO -->
+      <img
+        class="logo-desktop"
+        src="images/logo_black.png"
+        alt="Serene Until Now Logo">
+
+      <!-- MOBILE / PHONE LOGO -->
+      <img
+        class="logo-mobile"
+        src="images/logo_white.png"
+        alt="Serene Until Now Logo">
+
+    </div>
+
+    <div class="mobile-toggle"
+    onclick="toggleMenu()">
+      ☰
+    </div>
+
+    <ul class="nav-links"
+    id="navMenu">
+
+      <li class="dropdown">
+
+        <a href="#">
+          Services ▾
+        </a>
+
+        <ul class="dropdown-menu">
+
+          <li><a href="#">Inner Voice Sessions</a></li>
+
+          <li><a href="#">Live Coaching</a></li>
+
+          <li><a href="#">Life Alignment</a></li>
+
+          <li><a href="#">Meditation</a></li>
+
+        </ul>
+
+      </li>
+
+      <li><a href="#">Podcast</a></li>
+
+      <li><a href="#">About</a></li>
+
+      <li><a href="#">Work with Me</a></li>
+
+      <li><a href="#">Contact</a></li>
+
+    </ul>
+
+  </nav>
+
+  <section class="hero-content">
+
+    <div class="hero-text">
+
+      <h1>Shine from Within.</h1>
+
+      <p>
+        Awaken your inner voice.
+        Align your life.
+        Step into your light.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#" class="primary-btn">
+          WORK WITH ME
+        </a>
+
+        <a href="#" class="secondary-btn">
+          EXPLORE SERVICES →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</header>
+<br>
+
+<main>
+  <h1 style="color: #313131">Serene Until Now</h1>
+  <p style="color:#313131;">Color Design System: calming blues, warm beiges, natural wood tones, and soft champagne accents.</p> <br><br>
+    <section>
+    <h2>Primary Brand Palette</h2>
+    <div class="palette">
+      <div class="swatch"><div class="color" style="background:#2E4057"></div><div class="info"><strong>Deep Serenity Blue</strong><code>#2E4057</code><p>Primary buttons, headings, nav, footer.</p></div></div>
+      <div class="swatch"><div class="color" style="background:#6E8CA0"></div><div class="info"><strong>Mist Blue</strong><code>#6E8CA0</code><p>Secondary sections, icons, soft accents.</p></div></div>
+      <div class="swatch"><div class="color" style="background:#EFE6DD"></div><div class="info"><strong>Linen Beige</strong><code>#EFE6DD</code><p>Warm background, cards, calm page sections.</p></div></div>
+      <div class="swatch"><div class="color" style="background:#FAF7F2"></div><div class="info"><strong>Soft White</strong><code>#FAF7F2</code><p>Main website background instead of pure white.</p></div></div>
+      <div class="swatch"><div class="color" style="background:#8A6A52"></div><div class="info"><strong>Walnut Wood</strong><code>#8A6A52</code><p>Natural grounding color, borders, image overlays.</p></div></div>
+      <div class="swatch"><div class="color" style="background:#D6C2A1"></div><div class="info"><strong>Champagne Gold</strong><code>#D6C2A1</code><p>Premium highlights, hover states, dividers.</p></div></div>
+      <div class="swatch"><div class="color" style="background:#2B2B2B"></div><div class="info"><strong>Charcoal Text</strong><code>#2B2B2B</code><p>Main body text for readability.</p></div></div>
+      <div class="swatch"><div class="color" style="background:#B0A18F"></div><div class="info"><strong>Muted Stone</strong><code>#B0A18F</code><p>Subtle borders, muted text, backgrounds.</p></div></div>
+    </div>
+  </section> <br><br>
+
+  <section>
+    <h2>Theme Usage Standards</h2>
+    <div class="usage-grid">
+      <div class="card"><h3>Primary Theme</h3><p>Soft White background, Charcoal text, Deep Serenity Blue headings, Champagne Gold accents.</p><a class="button-demo">Primary Button</a></div>
+      <div class="card"><h3>Warm Section</h3><p>Linen Beige section background with Walnut Wood details for a grounded, natural tone.</p><a class="secondary-button">Soft Accent</a></div>
+      <div class="card"><h3>Premium Accent</h3><p>Use Champagne Gold sparingly for calls-to-action, dividers, hover states, and small highlights.</p></div>
+      <div class="card"><h3>Calming Accent</h3><p>Mist Blue works well for testimonials, quote blocks, soft backgrounds, and icon treatments.</p></div>
+    </div>
+  </section><br><br>
+
+  <section>
+    <h2>CSS Variables</h2>
+<pre><code>:root {
+  --deep-serenity-blue: #2E4057;
+  --mist-blue: #6E8CA0;
+  --linen-beige: #EFE6DD;
+  --soft-white: #FAF7F2;
+  --walnut-wood: #8A6A52;
+  --cedar-wood: #7B5E47;
+  --champagne-gold: #D6C2A1;
+  --charcoal-text: #2B2B2B;
+  --muted-stone: #B0A18F;
+}</code></pre>
+  </section>
+</main>
+<footer>
+  Recommended brand feel: warm, serene, soulful, elegant, and natural.
+</footer>
+<script>
+
+function toggleMenu() {
+
+  document
+    .getElementById('navMenu')
+    .classList
+    .toggle('active');
+}
+
+</script>
+
+
+<!-- BACK TO TOP BUTTON -->
+
+<button id="backToTop" aria-label="Back to Top">
+  ↑
+</button>
+
+<script>
+
+/* BACK TO TOP */
+
+const backToTopBtn =
+document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+
+  if (window.scrollY > 300) {
+
+    backToTopBtn.style.display = "flex";
+
+  } else {
+
+    backToTopBtn.style.display = "none";
+  }
+});
+
+backToTopBtn.addEventListener("click", () => {
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+</script>
+
+</body>
+</html>
